@@ -1,0 +1,12 @@
+_chrome-profile*/
+参考/
+没有用/
+
+作品素材/*
+!作品素材/1.png
+!作品素材/2.png
+!作品素材/3.png
+!作品素材/4.png
+
+.DS_Store
+Thumbs.db
