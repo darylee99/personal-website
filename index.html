@@ -1,103 +1,1505 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>李嘉航 | 视觉设计作品集</title>
-    <meta
-      name="description"
-      content="李嘉航的视觉设计作品集，展示活动视觉、发布会视觉与展陈相关设计。"
-    >
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body class="is-intro-running">
-    <div class="intro-sequence" aria-hidden="true">
-      <div class="intro-hello" aria-hidden="true">
-        <span class="intro-hello-slice" style="--slice: 0">hello</span>
-        <span class="intro-hello-slice" style="--slice: 1">hello</span>
-        <span class="intro-hello-slice" style="--slice: 2">hello</span>
-        <span class="intro-hello-slice" style="--slice: 3">hello</span>
-        <span class="intro-hello-slice" style="--slice: 4">hello</span>
-        <span class="intro-hello-slice" style="--slice: 5">hello</span>
-        <span class="intro-hello-slice" style="--slice: 6">hello</span>
-        <span class="intro-hello-slice" style="--slice: 7">hello</span>
-      </div>
-      <div class="intro-lines" aria-hidden="true">
-        <span class="intro-line intro-line-one">
-          <span class="intro-line-part intro-line-left"></span>
-          <span class="intro-line-part intro-line-right"></span>
-        </span>
-        <span class="intro-line intro-line-two">
-          <span class="intro-line-part intro-line-left"></span>
-          <span class="intro-line-part intro-line-right"></span>
-        </span>
-        <span class="intro-line intro-line-three">
-          <span class="intro-line-part intro-line-left"></span>
-          <span class="intro-line-part intro-line-right"></span>
-        </span>
-      </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李嘉航 — 视觉设计作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Sora:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #faf9f6;
+    --bg-surface: #f3f1ec;
+    --bg-card: #ffffff;
+    --ink: #1a1a1a;
+    --ink-dim: #5c5c5c;
+    --muted: #999999;
+    --accent: #c41e3a;
+    --accent-glow: rgba(196, 30, 58, 0.08);
+    --rule: #d6d4cf;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+    --space-5xl: 120px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #c4c0b8 #faf9f6; }
+
+  body {
+    font-family: 'DM Sans', 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg-deep);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Home / Video Hero ── */
+  #home {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-bottom: 0;
+    z-index: 1;
+    background: #e8e6e1;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: -12vh;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100% + 12vh);
+    object-fit: cover;
+    object-position: 50% 38%;
+    z-index: 0;
+    will-change: transform;
+  }
+
+
+  .hero-fallback {
+    position: absolute;
+    inset: 0;
+    background: #e8e6e1;
+    z-index: -1;
+  }
+
+  .hero-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+  }
+
+  @keyframes heroPulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 var(--space-xl) var(--space-lg);
+    transform: translateY(0);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: var(--space-lg);
+    min-height: 1.05em;
+  }
+
+  .hero-title .char {
+    display: inline-block;
+    opacity: 0;
+    transition: font-weight 0.08s ease-out;
+  }
+
+  .hero-sub {
+    font-size: clamp(15px, 1.8vw, 19px);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+  }
+
+  .sub-cursor {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 100;
+    font-size: 0.75em;
+    margin-left: 2px;
+    opacity: 1;
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    border-right: 2px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+    transform: translateX(-50%) rotate(45deg);
+    animation: arrowBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes arrowBounce {
+    0%, 100% { opacity: 0.4; bottom: 100px; }
+    50% { opacity: 0.9; bottom: 90px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Works Section ── */
+  #works {
+    position: relative;
+    z-index: 2;
+    padding: var(--space-4xl) var(--space-2xl) var(--space-3xl);
+    background: #ffffff;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--rule);
+    display: inline-block;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .work-card {
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    position: relative;
+    min-height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 0;
+    background: #ffffff;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: border-color 0.4s ease;
+    will-change: opacity, transform;
+  }
+
+  .work-card:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .work-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .work-card:nth-child(1) { grid-column: 1 / 2; grid-row: 1 / 2; }
+  .work-card:nth-child(2) { grid-column: 2 / 3; grid-row: 1 / 2; }
+  .work-card:nth-child(3) { grid-column: 3 / 5; grid-row: 1 / 3; }
+  .work-card:nth-child(4) { grid-column: 1 / 3; grid-row: 2 / 4; }
+  .work-card:nth-child(5) { grid-column: 3 / 4; grid-row: 3 / 4; }
+  .work-card:nth-child(6) { grid-column: 4 / 5; grid-row: 3 / 4; }
+
+  .work-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-card);
+    overflow: hidden;
+    line-height: 0;
+    border-radius: 0;
+  }
+
+  .work-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.25, 0, 0.1, 1);
+  }
+
+  .work-card:hover .work-card-image img {
+    transform: scale(1.04);
+  }
+
+  .work-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.52) 0%, transparent 42%);
+    pointer-events: none;
+  }
+
+  .work-card-title {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    right: 0;
+    z-index: 2;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    padding: 48px 20px 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease, bottom 0.3s ease;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  }
+
+  .work-card:hover .work-card-title {
+    bottom: 26px;
+  }
+
+  .work-card-category {
+    position: absolute;
+    left: 20px;
+    bottom: 12px;
+    z-index: 2;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    transition: bottom 0.3s ease;
+  }
+
+  .work-card:hover .work-card-category {
+    bottom: 12px;
+  }
+
+  /* ── Contact Section ── */
+  #contact {
+    position: relative;
+    z-index: 2;
+    padding: var(--space-5xl) var(--space-2xl) var(--space-3xl);
+    background: #ffffff;
+  }
+
+  .contact-content {
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-content h2 {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: var(--space-xl);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .contact-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: var(--space-2xl);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: justify;
+    text-align-last: justify;
+    white-space: nowrap;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 640px);
+    margin: 0 auto;
+  }
+
+  /* ── Contact Item (swap on hover) ── */
+  .contact-item {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* vertical divider */
+  .contact-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .contact-row {
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .contact-item:hover .contact-row {
+    transform: translateY(-21px);
+  }
+
+  .contact-text-wrap {
+    display: grid;
+    height: 21px;
+    overflow: hidden;
+  }
+  .contact-label,
+  .contact-value {
+    grid-row: 1;
+    grid-column: 1;
+    height: 21px;
+    line-height: 21px;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .contact-label {
+    color: var(--ink-dim);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .contact-value {
+    color: var(--ink);
+    transform: translateY(21px);
+    opacity: 0;
+  }
+
+  .contact-item:hover .contact-label {
+    transform: translateY(-21px);
+    opacity: 0;
+  }
+
+  .contact-item:hover .contact-value {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .copy-toast {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--accent);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(12px, 20px);
+    transition: opacity 0.2s ease;
+    z-index: 9999;
+    white-space: nowrap;
+  }
+
+  .copy-toast.show {
+    opacity: 1;
+  }
+
+  /* ── Lightbox ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 28px;
+    transition: color 0.3s ease;
+  }
+
+  .lightbox-close:hover { color: #ffffff; }
+
+  .lightbox-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw - var(--space-xl) - var(--space-xl));
+    height: calc(100vh - 160px);
+    height: calc(100dvh - 160px);
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .lightbox-img-wrap {
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lightbox-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(18, 18, 18, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.88);
+    box-shadow:
+      0 12px 34px rgba(0, 0, 0, 0.32),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 0;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+  }
+
+  .lightbox-arrow::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+  }
+
+  .lightbox-arrow:hover {
+    background: rgba(255, 255, 255, 0.88);
+    color: #111111;
+    border-color: rgba(17, 17, 17, 0.22);
+  }
+
+  .lightbox-arrow.left  {
+    left: 0;
+    border-left: 0;
+    border-radius: 0 999px 999px 0;
+  }
+
+  .lightbox-arrow.left::before { transform: rotate(225deg); }
+
+  .lightbox-arrow.right {
+    right: 0;
+    border-right: 0;
+    border-radius: 999px 0 0 999px;
+  }
+
+  .lightbox-arrow.right::before { transform: rotate(45deg); }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+  }
+
+  .lightbox-title-bar {
+    position: absolute;
+    top: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    text-align: center;
+  }
+
+  /* ── More Button ── */
+  .more-works-btn {
+    display: inline-block;
+    margin: var(--space-2xl) auto 0;
+    padding: 12px 36px;
+    font-family: 'Sora', 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .more-works-btn:hover {
+    background: var(--ink);
+    color: #ffffff;
+  }
+
+  .more-arrow {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+  }
+
+  .more-works-btn:hover .more-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Full Portfolio Horizontal Scroll ── */
+  .full-portfolio {
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s cubic-bezier(0.25, 0, 0.1, 1);
+  }
+
+  .full-portfolio.open {
+    max-height: 100vh;
+  }
+
+  .portfolio-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 80vh;
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-md);
+    scroll-behavior: smooth;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #c4c0b8 transparent;
+  }
+
+  .portfolio-scroll:active {
+    cursor: grabbing;
+  }
+
+  .portfolio-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .portfolio-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .portfolio-scroll::-webkit-scrollbar-thumb {
+    background: #c4c0b8;
+    border-radius: 3px;
+  }
+
+  .portfolio-scroll img {
+    height: 100%;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    #home { padding-bottom: calc(var(--space-5xl) + 24px); }
+    .hero-video {
+      top: -10vh;
+      height: calc(100% + 10vh);
+      object-position: 50% 42%;
+    }
+    .hero-content { transform: translateY(0); }
+    #works { padding: var(--space-3xl) var(--space-lg) var(--space-xl); }
+    .works-grid { grid-template-columns: 1fr; }
+    .work-card:nth-child(1),
+    .work-card:nth-child(2),
+    .work-card:nth-child(3),
+    .work-card:nth-child(4),
+    .work-card:nth-child(5),
+    .work-card:nth-child(6) { grid-column: auto; grid-row: auto; }
+    .work-card-title { left: 0; right: 0; bottom: 20px; padding: 40px 14px 4px; font-size: 14px; }
+    .work-card-category { left: 14px; bottom: 10px; }
+    #contact {
+      padding: var(--space-3xl) var(--space-lg);
+    }
+    .contact-content h2,
+    .contact-content p { white-space: normal; }
+    .contact-links { flex-wrap: wrap; gap: var(--space-sm); }
+    .hero-title { font-size: clamp(32px, 10vw, 56px); }
+    .lightbox-arrow { width: 40px; height: 80px; }
+    .lightbox-close { top: var(--space-sm); right: var(--space-sm); }
+    .portfolio-scroll { height: 55vh; padding: var(--space-sm) var(--space-sm); gap: var(--space-sm); }
+    .full-portfolio.open { max-height: 65vh; }
+    .more-works-btn { padding: 10px 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+
+<!-- ═══ Home — Fullscreen Video Hero ═══ -->
+<section id="home">
+  <!-- Replace src with your own video -->
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" poster="素材库/poster.jpg">
+    <source src="素材库/333-h264.mp4" type="video/mp4">
+  </video>
+  <div class="hero-fallback"></div>
+
+
+
+  <div class="hero-content">
+    <h1 class="hero-title" id="heroTitle">HI，我是李嘉航</h1>
+    <p class="hero-sub"><span class="sub-text"></span><span class="sub-cursor">|</span></p>
+  </div>
+
+  <div class="hero-scroll-hint"></div>
+</section>
+
+<!-- ═══ Works ═══ -->
+<section id="works">
+  <div class="section-label">精选作品</div>
+  <div class="works-grid">
+    <div class="work-card" data-project="0">
+      <div class="work-card-image"><img src="素材库/包装设计.png" alt="" data-thumb /></div>
+      <div class="work-card-title">纪录片《工业传奇第三季：寻找制造的精度》包装</div>
+      <div class="work-card-category">包装设计</div>
     </div>
+    <div class="work-card" data-project="1">
+      <div class="work-card-image"><img src="素材库/KV长图海报设计.png" alt="" data-thumb /></div>
+      <div class="work-card-title">线上主视觉和海报设计</div>
+      <div class="work-card-category">KV & 海报设计</div>
+    </div>
+    <div class="work-card" data-project="2">
+      <div class="work-card-image"><img src="素材库/品牌设计.jpg" alt="" data-thumb /></div>
+      <div class="work-card-title">迷笛音乐节品牌设计</div>
+      <div class="work-card-category">品牌设计</div>
+    </div>
+    <div class="work-card" data-project="3">
+      <div class="work-card-image"><img src="素材库/活动设计.JPG" alt="" data-thumb /></div>
+      <div class="work-card-title">北京精雕创新价值发布会</div>
+      <div class="work-card-category">活动设计</div>
+    </div>
+    <div class="work-card" data-project="4">
+      <div class="work-card-image"><img src="素材库/画册设计.png" alt="" data-thumb /></div>
+      <div class="work-card-title">流程工业媒体宣传</div>
+      <div class="work-card-category">画册设计</div>
+    </div>
+    <div class="work-card" data-project="5">
+      <div class="work-card-image"><img src="素材库/UI设计.png" alt="" data-thumb /></div>
+      <div class="work-card-title">出海先锋领航奖网站</div>
+      <div class="work-card-category">UI 设计</div>
+    </div>
+  </div>
+  <button class="more-works-btn" id="moreWorksBtn">
+    完整作品集 <span class="more-arrow">&#8594;</span>
+  </button>
+</section>
 
-    <header class="site-header" aria-label="主导航">
-      <nav class="nav-links">
-        <a href="#home">首页</a>
-        <a href="portfolio.html">作品</a>
-        <a href="#contact">联系</a>
-      </nav>
-    </header>
+<!-- ═══ Full Portfolio - Horizontal Scroll ═══ -->
+<section class="full-portfolio" id="fullPortfolio">
+  <div class="portfolio-scroll" id="portfolioScroll"></div>
+</section>
 
-    <main>
-      <section class="hero" id="home" aria-label="作品展示">
-        <div class="hero-media" aria-hidden="true">
-          <div class="hero-slide is-active slide-one"></div>
-          <div class="hero-slide slide-two"></div>
-          <div class="hero-slide slide-three"></div>
-          <div class="hero-slide slide-four"></div>
-          <div class="slide-shutter" aria-hidden="true">
-            <span class="slide-shutter-blade" style="--i: 0"></span>
-            <span class="slide-shutter-blade" style="--i: 1"></span>
-            <span class="slide-shutter-blade" style="--i: 2"></span>
-            <span class="slide-shutter-blade" style="--i: 3"></span>
+<!-- ═══ Contact ═══ -->
+<section id="contact">
+  <div class="contact-content">
+    <div class="section-label">联系我</div>
+    <h2>一起创造不一样的作品。</h2>
+    <p>欢迎各类合作。无论是品牌、数字设计，还是全新的创意想法，都可以联系我。</p>
+    <div class="contact-links">
+      <!-- 邮箱 -->
+      <div class="contact-item" data-copy="745522110@qq.com">
+        <div class="contact-row">
+          <div class="contact-text-wrap">
+            <span class="contact-label">邮箱</span>
+            <span class="contact-value">745522110@qq.com</span>
           </div>
         </div>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-grid" aria-hidden="true"></div>
-
-        <div class="hero-copy">
-          <p class="hero-word hero-word-name hero-word-left">
-            <span class="hero-word-en">JIAHANG LI</span>
-            <span class="hero-word-cn">李嘉航</span>
-          </p>
-          <p class="hero-word hero-word-portfolio hero-word-right">
-            <span class="hero-word-en">PORTFOLIO</span>
-            <span class="hero-word-cn">作品集</span>
-          </p>
-          <p class="hero-word hero-word-design hero-word-left">
-            <span class="hero-word-en">VISUAL DESIGN</span>
-            <span class="hero-word-cn">视觉设计</span>
-          </p>
-          <a class="hero-word hero-word-showcase hero-word-right" href="portfolio.html" aria-label="查看作品集 PDF">
-            <span class="hero-word-arrow" aria-hidden="true">→</span>
-            <span class="hero-word-stack">
-              <span class="hero-word-en">VIEW</span>
-              <span class="hero-word-cn">查看作品</span>
-            </span>
-          </a>
+      </div>
+      <!-- 手机 -->
+      <div class="contact-item" data-copy="13184774627">
+        <div class="contact-row">
+          <div class="contact-text-wrap">
+            <span class="contact-label">手机</span>
+            <span class="contact-value">13184774627</span>
+          </div>
         </div>
-      </section>
+      </div>
+      <!-- 微信 -->
+      <div class="contact-item" data-copy="ooocato">
+        <div class="contact-row">
+          <div class="contact-text-wrap">
+            <span class="contact-label">微信</span>
+            <span class="contact-value">ooocato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-toast" id="copyToast">复制成功</div>
+  </div>
+</section>
 
-      <section class="contact" id="contact" aria-label="联系">
-        <a class="contact-link" href="mailto:745522110@qq.com" aria-label="复制邮箱 745522110@qq.com">
-          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16v12H4z"></path>
-            <path d="m4 7 8 6 8-6"></path>
-          </svg>
-          <span class="contact-text">745522110@qq.com</span>
-          <span class="copy-toast" role="status" aria-live="polite">复制成功</span>
-        </a>
-      </section>
-    </main>
+<!-- ═══ Lightbox Gallery ═══ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">&times;</button>
+  <div class="lightbox-title-bar" id="lbTitle"></div>
+  <div class="lightbox-main">
+    <button class="lightbox-arrow left" id="lbPrev" aria-label="上一张"></button>
+    <div class="lightbox-img-wrap" id="lbImgWrap">
+      <img class="lightbox-img" id="lbImg" src="" alt="" />
+    </div>
+    <button class="lightbox-arrow right" id="lbNext" aria-label="下一张"></button>
+  </div>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
 
-    <script src="script.js"></script>
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  // ── Variable Proximity ──
+  (function() {
+    const container = document.getElementById('home');
+    const titleEl = document.getElementById('heroTitle');
+    const RADIUS = 250;
+    const FROM_WEIGHT = 400;
+    const TO_WEIGHT = 900;
+
+    // Split text into character spans
+    const text = titleEl.textContent;
+    titleEl.textContent = '';
+    const chars = [];
+    for (const ch of text) {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch;
+      span.style.fontWeight = FROM_WEIGHT;
+      titleEl.appendChild(span);
+      chars.push(span);
+    }
+
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let rafId;
+
+    function updateMouse(e) {
+      const rect = container.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    }
+
+    function calculateFalloff(dist) {
+      const norm = Math.min(Math.max(1 - dist / RADIUS, 0), 1);
+      return norm * norm; // exponential
+    }
+
+    function loop() {
+      const containerRect = container.getBoundingClientRect();
+
+      for (const span of chars) {
+        const rect = span.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2 - containerRect.left;
+        const cy = rect.top + rect.height / 2 - containerRect.top;
+        const dx = mouseX - cx;
+        const dy = mouseY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist >= RADIUS) {
+          span.style.fontWeight = FROM_WEIGHT;
+        } else {
+          const t = calculateFalloff(dist);
+          const w = Math.round(FROM_WEIGHT + (TO_WEIGHT - FROM_WEIGHT) * t);
+          span.style.fontWeight = w;
+        }
+      }
+
+      rafId = requestAnimationFrame(loop);
+    }
+
+    container.addEventListener('mousemove', updateMouse);
+    container.addEventListener('mouseleave', () => {
+      mouseX = -9999;
+      mouseY = -9999;
+    });
+
+    rafId = requestAnimationFrame(loop);
+
+    window.addEventListener('beforeunload', () => cancelAnimationFrame(rafId));
+  })();
+
+  // ── Subtitle Typewriter ──
+  (function() {
+    const textEl = document.querySelector('.sub-text');
+    const cursorEl = document.querySelector('.sub-cursor');
+    const parts = ['一名视觉设计师', '，也是视觉语言的构建者。'];
+    let partIndex = 0;
+    let charIndex = 0;
+    let timeout;
+
+    // GSAP cursor blink
+    gsap.to(cursorEl, {
+      opacity: 0,
+      duration: 0.5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'power2.inOut'
+    });
+
+    function type() {
+      const currentText = parts[partIndex];
+
+      if (charIndex < currentText.length) {
+        charIndex++;
+        const display = parts.slice(0, partIndex).join('') + currentText.slice(0, charIndex);
+        textEl.textContent = display;
+        const speed = 75 + (Math.random() - 0.5) * 40;
+        timeout = setTimeout(type, speed);
+      } else if (partIndex < parts.length - 1) {
+        partIndex++;
+        charIndex = 0;
+        timeout = setTimeout(type, 500);
+      } else {
+        cursorEl.style.display = 'none';
+      }
+    }
+
+    // Start 1.2s after page load (title appears first)
+    timeout = setTimeout(type, 1200);
+
+    window.addEventListener('beforeunload', () => clearTimeout(timeout));
+  })();
+
+  // ── Hero fade on scroll ──
+  (function() {
+    const heroContent = document.querySelector('.hero-content');
+    const scrollHint = document.querySelector('.hero-scroll-hint');
+    const heroVideo = document.querySelector('.hero-video');
+    const worksSection = document.querySelector('#works');
+    let ticking = false;
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function easeOutCubic(value) {
+      return 1 - Math.pow(1 - value, 3);
+    }
+
+    function updateScrollMotion() {
+      ticking = false;
+
+      const s = window.scrollY || window.pageYOffset || 0;
+      const vh = window.innerHeight || 1;
+      const heroProgress = clamp(s / (vh * 0.72), 0, 1);
+      const heroEase = easeOutCubic(heroProgress);
+
+      if (heroContent) {
+        heroContent.style.opacity = 1 - heroEase;
+        heroContent.style.transform = 'translate3d(0,' + (-42 * heroEase) + 'px,0) scale(' + (1 - 0.035 * heroEase) + ')';
+      }
+
+      if (scrollHint) {
+        const hintOpacity = clamp(1 - s / 300, 0, 1);
+        scrollHint.style.opacity = hintOpacity;
+        scrollHint.style.animation = hintOpacity < 0.98 ? 'none' : '';
+        scrollHint.style.transform = 'translateX(-50%) translateY(' + (18 * heroEase) + 'px) rotate(45deg)';
+      }
+
+      if (heroVideo) {
+        heroVideo.style.transform = 'translate3d(0,' + (s * 0.08) + 'px,0) scale(' + (1 + 0.035 * heroEase) + ')';
+      }
+
+      if (worksSection) {
+        const worksTop = worksSection.getBoundingClientRect().top;
+        const worksProgress = clamp((vh - worksTop) / (vh * 0.65), 0, 1);
+        const worksEase = easeOutCubic(worksProgress);
+        worksSection.style.transform = 'translate3d(0,' + (28 * (1 - worksEase)) + 'px,0)';
+      }
+    }
+
+    function requestScrollMotion() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateScrollMotion);
+    }
+
+    updateScrollMotion();
+    window.addEventListener('scroll', requestScrollMotion, { passive: true });
+    window.addEventListener('resize', requestScrollMotion);
+  })();
+
+  // ── WeChat video autoplay ──
+  (function() {
+    var video = document.querySelector('.hero-video');
+    if (!video) return;
+
+    function tryPlay() {
+      if (video.paused) {
+        var playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            // Retry once after a short delay
+            setTimeout(function() {
+              video.play().catch(function() {});
+            }, 300);
+          });
+        }
+      }
+    }
+
+    // WeChat iOS: listen for WeixinJSBridge ready
+    if (typeof WeixinJSBridge !== 'undefined') {
+      tryPlay();
+    } else {
+      document.addEventListener('WeixinJSBridgeReady', tryPlay, { once: true });
+    }
+
+    // Fallback: also try on first user touch (covers WeChat Android and general mobile)
+    var touched = false;
+    function onFirstTouch() {
+      if (touched) return;
+      touched = true;
+      tryPlay();
+      document.removeEventListener('touchstart', onFirstTouch);
+      document.removeEventListener('click', onFirstTouch);
+    }
+    document.addEventListener('touchstart', onFirstTouch, { once: true, passive: true });
+    document.addEventListener('click', onFirstTouch, { once: true });
+
+    // Visibility change: resume playback when tab/page becomes visible again
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && video.paused) {
+        video.play().catch(function() {});
+      }
+    });
+  })();
+
+  // ── Lightbox Gallery ──
+  (function() {
+    const projectImages = [
+      ['素材库/纪录片包装/page_15.png'],
+      ['素材库/KV海报/page_28.png', '素材库/KV海报/page_29.png'],
+      [
+        '素材库/迷笛音乐节/page_19.png',
+        '素材库/迷笛音乐节/page_20.png',
+        '素材库/迷笛音乐节/page_22.png',
+        '素材库/迷笛音乐节/page_23.png',
+        '素材库/迷笛音乐节/page_24.png',
+        '素材库/迷笛音乐节/page_25.png',
+        '素材库/迷笛音乐节/page_26.png'
+      ],
+      [
+        '素材库/精雕发布会/page_4.png',
+        '素材库/精雕发布会/page_6.png',
+        '素材库/精雕发布会/page_7.png',
+        '素材库/精雕发布会/page_8.png'
+      ],
+      ['素材库/流程工业/page_31.png', '素材库/流程工业/page_33.png'],
+      ['素材库/出海先锋/page_37.png']
+    ];
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbCounter = document.getElementById('lbCounter');
+    const lbClose = document.getElementById('lbClose');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const cards = document.querySelectorAll('.work-card');
+
+    let currentProject = -1;
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    function getCardImgRect(idx) {
+      return cards[idx].querySelector('.work-card-image img').getBoundingClientRect();
+    }
+
+    function isCardVisible(idx) {
+      const r = getCardImgRect(idx);
+      return r.bottom > 0 && r.top < window.innerHeight;
+    }
+
+    function open(projectIndex, imageIndex) {
+      const images = projectImages[projectIndex];
+      if (!images || images.length === 0 || isAnimating) return;
+      isAnimating = true;
+
+      currentProject = projectIndex;
+      currentIndex = imageIndex || 0;
+      const src = images[currentIndex];
+      const cardRect = getCardImgRect(projectIndex);
+
+      lbTitle.textContent = cards[currentProject].querySelector('.work-card-title').textContent;
+      lbCounter.textContent = (currentIndex + 1) + ' / ' + images.length;
+
+      gsap.killTweensOf(lbImg);
+      gsap.killTweensOf(lb);
+      gsap.set(lbImg, { clearProps: 'all' });
+
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      gsap.set(lb, { opacity: 0 });
+      gsap.set(lbImg, { opacity: 0 });
+
+      var preload = new Image();
+      var started = false;
+      function beginAnimation() {
+        if (started) return;
+        started = true;
+
+        lbImg.src = src;
+
+        // Wait one frame for browser to lay out the new image
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            var finalRect = lbImg.getBoundingClientRect();
+
+            if (!finalRect.width || !finalRect.height) {
+              gsap.to(lb, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+              gsap.to(lbImg, { opacity: 1, duration: 0.4, ease: 'power3.out',
+                onComplete: function() { isAnimating = false; } });
+              return;
+            }
+
+            var scaleX = cardRect.width / finalRect.width;
+            var scaleY = cardRect.height / finalRect.height;
+            var cardCX = cardRect.left + cardRect.width / 2;
+            var cardCY = cardRect.top + cardRect.height / 2;
+            var finalCX = finalRect.left + finalRect.width / 2;
+            var finalCY = finalRect.top + finalRect.height / 2;
+
+            gsap.set(lbImg, {
+              transformOrigin: '50% 50%',
+              scaleX: scaleX,
+              scaleY: scaleY,
+              x: cardCX - finalCX,
+              y: cardCY - finalCY,
+              opacity: 0.6
+            });
+
+            gsap.to(lb, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+            gsap.to(lbImg, {
+              scaleX: 1,
+              scaleY: 1,
+              x: 0,
+              y: 0,
+              opacity: 1,
+              duration: 0.55,
+              ease: 'power3.out',
+              onComplete: function() {
+                gsap.set(lbImg, { clearProps: 'all' });
+                isAnimating = false;
+              }
+            });
+          });
+        });
+      }
+      preload.onload = beginAnimation;
+      preload.onerror = beginAnimation;
+      preload.src = src;
+      if (preload.complete && preload.naturalWidth) beginAnimation();
+    }
+
+    function close() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      gsap.killTweensOf(lbImg);
+      gsap.killTweensOf(lb);
+      gsap.set(lbImg, { clearProps: 'all' });
+
+      var imgRect = lbImg.getBoundingClientRect();
+
+      if (currentProject >= 0 && isCardVisible(currentProject)) {
+        var cardRect = getCardImgRect(currentProject);
+        var scaleX = cardRect.width / imgRect.width;
+        var scaleY = cardRect.height / imgRect.height;
+        var cardCX = cardRect.left + cardRect.width / 2;
+        var cardCY = cardRect.top + cardRect.height / 2;
+        var imgCX = imgRect.left + imgRect.width / 2;
+        var imgCY = imgRect.top + imgRect.height / 2;
+
+        gsap.to(lbImg, {
+          transformOrigin: '50% 50%',
+          scaleX: scaleX,
+          scaleY: scaleY,
+          x: cardCX - imgCX,
+          y: cardCY - imgCY,
+          opacity: 0.3,
+          duration: 0.4,
+          ease: 'power3.in'
+        });
+      } else {
+        gsap.to(lbImg, { scale: 0.92, opacity: 0, duration: 0.3, ease: 'power2.in' });
+      }
+
+      gsap.to(lb, {
+        opacity: 0,
+        duration: 0.35,
+        ease: 'power2.in',
+        onComplete: function() {
+          lb.classList.remove('open');
+          document.body.style.overflow = '';
+          currentProject = -1;
+          gsap.set(lbImg, { clearProps: 'all' });
+          gsap.set(lb, { clearProps: 'opacity' });
+          isAnimating = false;
+        }
+      });
+    }
+
+    function go(dir) {
+      var images = projectImages[currentProject];
+      if (!images || images.length <= 1 || isAnimating) return;
+
+      var oldIndex = currentIndex;
+      currentIndex = (currentIndex + dir + images.length) % images.length;
+      if (currentIndex === oldIndex) return;
+
+      isAnimating = true;
+      lbCounter.textContent = (currentIndex + 1) + ' / ' + images.length;
+
+      gsap.killTweensOf(lbImg);
+
+      gsap.to(lbImg, {
+        x: dir * 50,
+        opacity: 0,
+        duration: 0.18,
+        ease: 'power2.in',
+        onComplete: function() {
+          lbImg.src = images[currentIndex];
+          gsap.set(lbImg, { x: -dir * 50, opacity: 0 });
+          lbImg.offsetHeight;
+          gsap.to(lbImg, {
+            x: 0,
+            opacity: 1,
+            duration: 0.28,
+            ease: 'power2.out',
+            onComplete: function() { isAnimating = false; }
+          });
+        }
+      });
+    }
+
+    cards.forEach(function(card, i) {
+      card.addEventListener('click', function() { open(i, 0); });
+    });
+
+    lbPrev.addEventListener('click', function(e) { e.stopPropagation(); go(-1); });
+    lbNext.addEventListener('click', function(e) { e.stopPropagation(); go(1); });
+
+    lbClose.addEventListener('click', close);
+
+    function isPointInsideVisibleImage(x, y) {
+      var rect = lbImg.getBoundingClientRect();
+      var naturalW = lbImg.naturalWidth || 0;
+      var naturalH = lbImg.naturalHeight || 0;
+
+      if (!rect.width || !rect.height || !naturalW || !naturalH) {
+        return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      }
+
+      var boxRatio = rect.width / rect.height;
+      var imgRatio = naturalW / naturalH;
+      var visibleW = rect.width;
+      var visibleH = rect.height;
+      var visibleLeft = rect.left;
+      var visibleTop = rect.top;
+
+      if (imgRatio > boxRatio) {
+        visibleH = rect.width / imgRatio;
+        visibleTop = rect.top + (rect.height - visibleH) / 2;
+      } else {
+        visibleW = rect.height * imgRatio;
+        visibleLeft = rect.left + (rect.width - visibleW) / 2;
+      }
+
+      return x >= visibleLeft && x <= visibleLeft + visibleW &&
+             y >= visibleTop && y <= visibleTop + visibleH;
+    }
+
+    lb.addEventListener('click', function(e) {
+      if (e.target.closest('.lightbox-arrow, .lightbox-close, .lightbox-title-bar, .lightbox-counter')) return;
+      if (!isPointInsideVisibleImage(e.clientX, e.clientY)) close();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (currentProject === -1) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'ArrowRight') go(1);
+    });
+
+    var touchStartX = 0, touchStartY = 0;
+
+    lb.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    lb.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        go(dx > 0 ? -1 : 1);
+      }
+    });
+  })();
+
+  // ── Full Portfolio Horizontal Scroll ──
+  (function() {
+    var btn = document.getElementById('moreWorksBtn');
+    var panel = document.getElementById('fullPortfolio');
+    var scroll = document.getElementById('portfolioScroll');
+    var totalPages = 41;
+
+    // Populate images
+    for (var i = 1; i <= totalPages; i++) {
+      var num = String(i).padStart(2, '0');
+      var img = document.createElement('img');
+      img.src = '素材库/完整作品集/page_' + num + '.png';
+      img.alt = '作品集 p' + i;
+      img.loading = 'lazy';
+      scroll.appendChild(img);
+    }
+
+    // Toggle open/close
+    var isOpen = false;
+    btn.addEventListener('click', function() {
+      isOpen = !isOpen;
+      if (isOpen) {
+        panel.classList.add('open');
+        btn.innerHTML = '收起作品集 <span class=\"more-arrow\" style=\"transform:rotate(-90deg)\">&#8594;</span>';
+        setTimeout(function() {
+          var btnTop = btn.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: btnTop, behavior: 'smooth' });
+        }, 600);
+      } else {
+        panel.classList.remove('open');
+        btn.innerHTML = '完整作品集 <span class=\"more-arrow\">&#8594;</span>';
+      }
+    });
+
+    // Mouse drag to scroll
+    var isDown = false;
+    var startX, scrollLeft;
+
+    scroll.addEventListener('mousedown', function(e) {
+      isDown = true;
+      scroll.style.cursor = 'grabbing';
+      startX = e.pageX - scroll.offsetLeft;
+      scrollLeft = scroll.scrollLeft;
+    });
+
+    scroll.addEventListener('mouseleave', function() {
+      isDown = false;
+      scroll.style.cursor = 'grab';
+    });
+
+    scroll.addEventListener('mouseup', function() {
+      isDown = false;
+      scroll.style.cursor = 'grab';
+    });
+
+    scroll.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - scroll.offsetLeft;
+      var walk = (x - startX) * 1.5;
+      scroll.scrollLeft = scrollLeft - walk;
+    });
+
+    // Wheel → horizontal scroll
+    scroll.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      scroll.scrollLeft += e.deltaY * 4;
+    }, { passive: false });
+  })();
+
+  // ── Contact: Click to Copy ──
+  (function() {
+    var toast = document.getElementById('copyToast');
+    var items = document.querySelectorAll('.contact-item');
+    var hideTimer;
+
+    function showToast() {
+      clearTimeout(hideTimer);
+      toast.classList.add('show');
+      hideTimer = setTimeout(function() {
+        toast.classList.remove('show');
+      }, 500);
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    items.forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        var text = this.getAttribute('data-copy');
+        if (!text) return;
+
+        toast.style.left = e.clientX + 'px';
+        toast.style.top = e.clientY + 'px';
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(showToast).catch(function() {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      });
+    });
+  })();
+
+  // ── Hero title SplitText entrance ──
+  (function() {
+    var heroSection = document.getElementById('home');
+    var chars = document.querySelectorAll('.hero-title .char');
+    if (!heroSection || !chars.length) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          gsap.killTweensOf(chars);
+          gsap.fromTo(chars,
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
+          );
+        } else {
+          gsap.killTweensOf(chars);
+          gsap.set(chars, { opacity: 0, y: 40 });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(heroSection);
+  })();
+
+  // ── Works scroll reveal ──
+  (function() {
+    var cards = document.querySelectorAll('.work-card');
+    if (!cards.length) return;
+    var ticking = false;
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function easeOutCubic(value) {
+      return 1 - Math.pow(1 - value, 3);
+    }
+
+    function updateCards() {
+      ticking = false;
+
+      var vh = window.innerHeight || 1;
+      var start = vh * 0.92;
+      var end = vh * 0.42;
+
+      cards.forEach(function(card, index) {
+        var rect = card.getBoundingClientRect();
+        var base = clamp((start - rect.top) / (start - end), 0, 1);
+        var stagger = (index % 4) * 0.045;
+        var progress = clamp((base - stagger) / (1 - stagger), 0, 1);
+        var eased = easeOutCubic(progress);
+
+        card.style.opacity = eased;
+        card.style.transform = 'translate3d(0,' + (36 * (1 - eased)) + 'px,0) scale(' + (0.985 + 0.015 * eased) + ')';
+
+        if (progress >= 1) {
+          card.classList.add('revealed');
+        } else {
+          card.classList.remove('revealed');
+        }
+      });
+    }
+
+    function requestCardsUpdate() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateCards);
+    }
+
+    updateCards();
+    window.addEventListener('scroll', requestCardsUpdate, { passive: true });
+    window.addEventListener('resize', requestCardsUpdate);
+  })();
+</script>
+
+</body>
 </html>
