@@ -133,6 +133,7 @@
   }
 
   .hero-scroll-hint {
+    display: block;
     position: absolute;
     bottom: 100px;
     left: 50%;
@@ -144,6 +145,8 @@
     transform: translateX(-50%) rotate(45deg);
     animation: arrowBounce 2s ease-in-out infinite;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
   }
 
   @keyframes arrowBounce {
@@ -720,7 +723,7 @@
     <p class="hero-sub"><span class="sub-text"></span><span class="sub-cursor">|</span></p>
   </div>
 
-  <div class="hero-scroll-hint"></div>
+  <a href="#works" class="hero-scroll-hint"></a>
 </section>
 
 <!-- ═══ Works ═══ -->
@@ -992,13 +995,6 @@
     updateScrollMotion();
     window.addEventListener('scroll', requestScrollMotion, { passive: true });
     window.addEventListener('resize', requestScrollMotion);
-
-    // Click scroll-hint arrow to jump to works
-    if (scrollHint && worksSection) {
-      scrollHint.addEventListener('click', function() {
-        worksSection.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
   })();
 
   // ── WeChat video autoplay ──
