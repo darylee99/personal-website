@@ -66,7 +66,6 @@
     object-fit: cover;
     object-position: 50% 38%;
     z-index: 0;
-    will-change: transform;
   }
 
 
@@ -707,7 +706,7 @@
 <!-- ═══ Home — Fullscreen Video Hero ═══ -->
 <section id="home">
   <!-- Replace src with your own video -->
-  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portrait" poster="素材库/poster.jpg">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline="true" x5-video-player-type="h5-page" x5-video-orientation="portrait" poster="素材库/poster.jpg">
     <source src="素材库/333-h264.mp4" type="video/mp4">
   </video>
   <div class="hero-fallback"></div>
@@ -1028,7 +1027,7 @@
       document.removeEventListener('touchstart', onFirstTouch);
       document.removeEventListener('click', onFirstTouch);
     }
-    document.addEventListener('touchstart', onFirstTouch, { once: true, passive: true });
+    document.addEventListener('touchstart', onFirstTouch, { once: true });
     document.addEventListener('click', onFirstTouch, { once: true });
 
     // Visibility change: resume playback when tab/page becomes visible again
